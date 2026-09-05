@@ -139,4 +139,8 @@ const clientDist = path.join(__dirname, "..", "client", "dist");
 app.use(express.static(clientDist));
 app.get("*splat", (_, res) => res.sendFile(path.join(clientDist, "index.html")));
 
-app.listen(PORT, () => console.log(`Market Rewind running on http://localhost:${PORT}`));
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Market Rewind running on port ${PORT}`);
+});
